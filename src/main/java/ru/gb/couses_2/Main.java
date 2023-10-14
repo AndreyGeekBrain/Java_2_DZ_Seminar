@@ -15,7 +15,7 @@ public class Main {
                     "Выберете игру: \n" +
                             "1 - Игра с цифрами \n" +
                             "2 - Игра с русскими буквами \n" +
-                            "3 - Игра с английскими словами \n" +
+                            "3 - Игра с английскими буквами \n" +
                             "4 - Выход из игры\n");
             int value = scanner.nextInt ();
             flagInner = true;
@@ -26,7 +26,7 @@ public class Main {
                     String name = scanner.next ();
                     System.out.println ("Выберите сколько у Вас попыток ");
                     int maxTry = scanner.nextInt ();
-                    System.out.println ("Выберите длину последовательности загадываемого слова ");
+                    System.out.println ("Выберите длину последовательности загадываемых чисел ");
                     int numberSequence = scanner.nextInt ();
                     AbstractGame numberGame = new NumberGame (name, maxTry, numberSequence);
                     numberGame.start ();
@@ -61,11 +61,34 @@ public class Main {
                     }else
                         break;
                 }
+
+                if (value == 3) {
+                    System.out.println ("Вы выбрали \"угадайку\" с английскими буквами!");
+                    System.out.println ("Введите имя игрока");
+                    String name = scanner.next ();
+                    System.out.println ("Выберите сколько у Вас попыток отгадать ");
+                    int maxTry = scanner.nextInt ();
+                    System.out.println ("Выберите длину загадываемой буквенной последовательности: ");
+                    int numberSequence = scanner.nextInt ();
+                    AbstractGame EnAlphabetGame = new EnAlphabet (name, maxTry, numberSequence);
+                    EnAlphabetGame.start();
+                    boolean inputValueFlag = true;
+                    for (int i = 0; i < maxTry && inputValueFlag; i++) {
+                        System.out.println ("Введите буквенную последовательность, которую загадал компьютер: ");
+                        inputValueFlag = EnAlphabetGame.inputValue (scanner.next ());
+                    }
+                    System.out.println ("Если вы хотите повторить игру напишите yes/no");
+                    if(scanner.next ().equals ("yes")){
+                    }else
+                        break;
+                }
+                if (value == 4 || value !=1 && value !=2 && value !=3){
+                    flagExternal = false;
+                    break;
+                }
             }
 
         }
-
-
     }
 
 
