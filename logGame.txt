@@ -1,0 +1,9 @@
+Answer{name='qwe', bull=0, cow=0, currentNumberOfAttempts=2, gameStatus=LOST}
+Answer{name='qwe', bull=0, cow=0, currentNumberOfAttempts=1, gameStatus=LOST}
+Answer{name='qwe', bull=3, cow=3, currentNumberOfAttempts=1, gameStatus=WINNER}
+Answer{name='qaz', bull=0, cow=2, currentNumberOfAttempts=3, gameStatus=LOST}
+Answer{name='qaz', bull=0, cow=0, currentNumberOfAttempts=2, gameStatus=LOST}
+Answer{name='qaz', bull=5, cow=5, currentNumberOfAttempts=2, gameStatus=WINNER}
+Answer{name='ror', bull=0, cow=0, currentNumberOfAttempts=2, gameStatus=LOST}
+Answer{name='ror', bull=0, cow=0, currentNumberOfAttempts=1, gameStatus=LOST}
+Answer{name='ror', bull=3, cow=3, currentNumberOfAttempts=1, gameStatus=WINNER}
