@@ -33,7 +33,7 @@ public abstract class AbstractGame implements Game {
      }
 
      @Override
-     public void inputValue (String worldPlayer) {
+     public boolean inputValue (String worldPlayer) {
           gameStatus = GameStatus.PROGRESS;
           answer.setGameStatus (getGameStatus ());
           for (int i = 0; i < worldPlayer.length (); i++) {
@@ -56,13 +56,14 @@ public abstract class AbstractGame implements Game {
           if (answer.getBull () == worldPlayer.length () && answer.getCow () == worldPlayer.length ()) {
                answer.setGameStatus (GameStatus.WINNER);
                System.out.println (answer);
+               return false;
           } else {
                answer.setCurrentNumberOfAttempts (answer.getCurrentNumberOfAttempts () - 1);
                answer.setGameStatus (GameStatus.LOST);
                System.out.println (answer);
-               answer.setBull (0);
-               answer.setCow (0);
-
+               answer.setBull(0);
+               answer.setCow(0);
+               return true;
           }
      }
 

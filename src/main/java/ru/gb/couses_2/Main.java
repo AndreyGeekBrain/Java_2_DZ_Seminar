@@ -7,7 +7,7 @@ public class Main {
 
     public static void main (String[] args) {
         boolean flagExternal = true;
-        boolean flagInner = true;
+        boolean flagInner;
         while (flagExternal) {
             System.out.printf ("Добро пожаловать в игру \"Быки и Коровы\"");
             Scanner scanner = new Scanner (System.in);
@@ -18,22 +18,48 @@ public class Main {
                             "3 - Игра с английскими словами \n" +
                             "4 - Выход из игры\n");
             int value = scanner.nextInt ();
+            flagInner = true;
             while (flagInner) {
                 if (value == 1) {
-                    System.out.println ("Вы выбрали угадайку в числа!");
+                    System.out.println ("Вы выбрали \"угадайку\" в числа!");
                     System.out.println ("Введите имя игрока");
                     String name = scanner.next ();
                     System.out.println ("Выберите сколько у Вас попыток ");
                     int maxTry = scanner.nextInt ();
                     System.out.println ("Выберите длину последовательности загадываемого слова ");
                     int numberSequence = scanner.nextInt ();
-                    NumberGame numberGame = new NumberGame (name, maxTry, numberSequence);
+                    AbstractGame numberGame = new NumberGame (name, maxTry, numberSequence);
                     numberGame.start ();
-                    for (int i = 0; i < maxTry; i++) {
+                    boolean inputValueFlag = true;
+                    for (int i = 0; i < maxTry && inputValueFlag; i++) {
                         System.out.println ("Введите число которое загадал компьютер: ");
-                        numberGame.inputValue (scanner.next ());
-
+                        inputValueFlag = numberGame.inputValue (scanner.next ());
                     }
+                    System.out.println ("Если вы хотите повторить игру напишите yes/no");
+                    if (scanner.next ().equals ("yes")){
+                    }else
+                        flagInner = false;
+                }
+
+                if (value == 2) {
+                    System.out.println ("Вы выбрали \"угадайку\" с русскими буквами!");
+                    System.out.println ("Введите имя игрока");
+                    String name = scanner.next ();
+                    System.out.println ("Выберите сколько у Вас попыток отгадать ");
+                    int maxTry = scanner.nextInt ();
+                    System.out.println ("Выберите длину загадываемой буквенной последовательности: ");
+                    int numberSequence = scanner.nextInt ();
+                    AbstractGame rusAlphabetGame = new RusAlphabet (name, maxTry, numberSequence);
+                    rusAlphabetGame.start();
+                    boolean inputValueFlag = true;
+                    for (int i = 0; i < maxTry && inputValueFlag; i++) {
+                        System.out.println ("Введите буквенную последовательность, которую загадал компьютер: ");
+                        inputValueFlag = rusAlphabetGame.inputValue (scanner.next ());
+                    }
+                    System.out.println ("Если вы хотите повторить игру напишите yes/no");
+                    if(scanner.next ().equals ("yes")){
+                    }else
+                        break;
                 }
             }
 
