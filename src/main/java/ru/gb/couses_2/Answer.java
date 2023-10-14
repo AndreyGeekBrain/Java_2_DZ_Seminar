@@ -1,11 +1,18 @@
 package ru.gb.couses_2;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class Answer {
-    String name;
-    int bull;
-    int cow;
-    int currentNumberOfAttempts;
-    GameStatus gameStatus;
+    private String name;
+    private int bull;
+    private int cow;
+    private int currentNumberOfAttempts;
+    private GameStatus gameStatus;
+    private File logGame;
+    private FileWriter fileWriter;
+
 
 
     public Answer (String name, int bull, int cow, int currentNumberOfAttempts, GameStatus gameStatus) {
@@ -14,6 +21,13 @@ public class Answer {
         this.cow = cow;
         this.currentNumberOfAttempts = currentNumberOfAttempts;
         this.gameStatus = gameStatus;
+        this.logGame = new File ("logGame.txt");
+        try {
+            this.fileWriter = new FileWriter (this.logGame);
+        } catch (IOException e) {
+            e.printStackTrace ();
+            System.out.println ("Ошибка создания файла!");
+        }
     }
 
     @Override
@@ -49,6 +63,17 @@ public class Answer {
 
     public void setCurrentNumberOfAttempts (int currentNumberOfAttempts) {
         this.currentNumberOfAttempts = currentNumberOfAttempts;
+    }
+
+    public void setLogGame (String filelog) {
+        try {
+            this.fileWriter.write (filelog);
+            this.fileWriter.append('\n');
+            this.fileWriter.flush ();
+        } catch (IOException e) {
+            e.printStackTrace ();
+            System.out.println ("Ошибка записи в файл!");
+        }
     }
 
     public void setGameStatus (GameStatus gameStatus) {

@@ -56,11 +56,13 @@ public abstract class AbstractGame implements Game {
           if (answer.getBull () == worldPlayer.length () && answer.getCow () == worldPlayer.length ()) {
                answer.setGameStatus (GameStatus.WINNER);
                System.out.println (answer);
+               answer.setLogGame (answer.toString ());
                return false;
           } else {
                answer.setCurrentNumberOfAttempts (answer.getCurrentNumberOfAttempts () - 1);
                answer.setGameStatus (GameStatus.LOST);
                System.out.println (answer);
+               answer.setLogGame (answer.toString ());
                answer.setBull(0);
                answer.setCow(0);
                return true;

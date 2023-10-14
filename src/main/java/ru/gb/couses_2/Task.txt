@@ -1,10 +1,1 @@
-3) Разработка игры “быки - коровы” (игрок против компьютера)
-a)	Интерфейс взаимодействий Game (должны быть описаны сигнатуры
-методов start, inputValue,getGameStatus)
-b)	Абстрактный класс AbstractGame (который предзаполняет слово компьютера
-- generateWord(), на основе generateCharList() - который является абстрактным методом)
-c)	Статусная модель с помощью перечислений(GameStatus)
-d)	Класс ответа Answer
-e)	Классы реализующие AbstractGame(предполагается игра
-на числах, англ буквах, русских буквах)
-f)	* реализовать restart().
+Answer{name='qwe', bull=2, cow=2, currentNumberOfAttempts=2, gameStatus=LOST}Answer{name='qwe', bull=3, cow=3, currentNumberOfAttempts=2, gameStatus=WINNER}
