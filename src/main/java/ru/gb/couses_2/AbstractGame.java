@@ -73,5 +73,9 @@ public abstract class AbstractGame implements Game {
      public GameStatus getGameStatus () {
           return gameStatus;
      }
+
+     public int getMaxTry () {
+          return maxTry;
+     }
 }
 

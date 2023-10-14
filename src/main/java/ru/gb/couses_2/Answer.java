@@ -1,6 +1,7 @@
 package ru.gb.couses_2;
 
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -13,7 +14,9 @@ public class Answer {
     private File logGame;
     private FileWriter fileWriter;
 
-
+    public Answer () {
+        this.logGame = new File ("logGame.txt");
+    }
 
     public Answer (String name, int bull, int cow, int currentNumberOfAttempts, GameStatus gameStatus) {
         this.name = name;
@@ -23,7 +26,7 @@ public class Answer {
         this.gameStatus = gameStatus;
         this.logGame = new File ("logGame.txt");
         try {
-            this.fileWriter = new FileWriter (this.logGame);
+            this.fileWriter = new FileWriter (this.logGame,true);
         } catch (IOException e) {
             e.printStackTrace ();
             System.out.println ("Ошибка создания файла!");
@@ -68,11 +71,24 @@ public class Answer {
     public void setLogGame (String filelog) {
         try {
             this.fileWriter.write (filelog);
-            this.fileWriter.append('\n');
+            this.fileWriter.append ('\n');
             this.fileWriter.flush ();
         } catch (IOException e) {
             e.printStackTrace ();
             System.out.println ("Ошибка записи в файл!");
+        }
+    }
+
+    public void getLogGame () {
+        try (FileReader reader = new FileReader (this.logGame)) {
+            System.out.println (logGame.isFile ());
+            int c;
+            while ((c = reader.read ()) != - 1) {
+                System.out.print ((char) c);
+            }
+        } catch (IOException ex) {
+            System.out.println ("Ошибка чтения из файла!");
+            System.out.println (ex.getMessage ());
         }
     }
 

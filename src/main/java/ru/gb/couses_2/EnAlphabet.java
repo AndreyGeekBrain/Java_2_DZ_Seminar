@@ -20,7 +20,7 @@ public class EnAlphabet extends AbstractGame {
         int numberRandom = -1;
         StringBuilder stringBuilder = new StringBuilder ();
         String abc = "abcdefghijklmnopqrstuvwxyz";
-        for (int i = 0; i < numberSequence; i++) {
+        for (int i = 0; i < super.getMaxTry (); i++) {
             numberRandom =  new Random ().nextInt (abc.length ());
             stringBuilder.append (abc.charAt (numberRandom));
         }

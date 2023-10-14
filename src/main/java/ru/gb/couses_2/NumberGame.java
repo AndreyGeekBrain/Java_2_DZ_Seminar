@@ -18,7 +18,7 @@ public class NumberGame extends AbstractGame {
         int numberRandom = -1;
         StringBuilder stringBuilder = new StringBuilder ();
         String abc = "0123456789";
-        for (int i = 0; i < numberSequence; i++) {
+        for (int i = 0; i < super.getMaxTry (); i++) {
             numberRandom =  new Random ().nextInt (numberSequence);
             stringBuilder.append (abc.charAt (numberRandom));        }
         return stringBuilder.toString ();
