@@ -33,7 +33,6 @@ public class ControllerPhoneBook {
                 servicePhoneBook.exportFilePhoneBookUser ();
                 return true;
             case 8:
-                servicePhoneBook.exitFilePhoneBookUser ();
                 return false;
 
         }
