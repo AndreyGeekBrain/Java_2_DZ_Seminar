@@ -14,7 +14,4 @@ public class PhoneBook {
         return phoneBookUserList;
     }
 
-    public void setPhoneBookUserList (List<PhoneBookUser> phoneBookUserList) {
-        this.phoneBookUserList = phoneBookUserList;
-    }
 }

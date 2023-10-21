@@ -14,6 +14,10 @@ public class PhoneBookUser {
         PhoneBookUser.setCountId (PhoneBookUser.getCountId ()+1);
         this.idUserBook = PhoneBookUser.getCountId ();
     }
+    public PhoneBookUser () {
+        PhoneBookUser.setCountId (PhoneBookUser.getCountId ()+1);
+        this.idUserBook = PhoneBookUser.getCountId ();
+    }
 
     public static int getCountId () {
         return countId;
