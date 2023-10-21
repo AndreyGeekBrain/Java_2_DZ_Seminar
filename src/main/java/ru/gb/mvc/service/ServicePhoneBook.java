@@ -25,67 +25,64 @@ public class ServicePhoneBook {
 
     public void viewPhoneBookUser(){
         for (PhoneBookUser phoneBookUser:phoneBook.getPhoneBookUserList ()) {
-            answer.getStringArrayList ().add (phoneBookUser.toString ());
+            answer.getBuffer ().add (phoneBookUser.toString ());
         }
-        answer.viewAnswer ();
+        answer.viewBufferArrayList ();
     }
     public void addPhoneBookUser(){
-        System.out.println ("Меню создания новой записи в телефонной книге:");
+        answer.viewStrMsg (0);
         Scanner scanner = new Scanner (System.in);
         PhoneBookUser phoneBookUser = new PhoneBookUser ();
-        System.out.println ("Введите имя контакта: ");
+        answer.viewStrMsg (1);
         phoneBookUser.setFirstName (scanner.nextLine ());
-        System.out.println ("Введите фамилию контакта: ");
+        answer.viewStrMsg (2);
         phoneBookUser.setLastName (scanner.nextLine ());
-        System.out.println ("Введите телефонный номер контакта: ");
+        answer.viewStrMsg (3);
         phoneBookUser.setPhoneNumber (scanner.nextLine ());
         phoneBook.getPhoneBookUserList ().add (phoneBookUser);
     }
     public void findPhoneBookUser(){
-        System.out.println ("Введите критерий поиска ( имя || фамилия || телефон ||): ");
+        answer.viewStrMsg (4);
         Scanner scanner = new Scanner (System.in);
         String msg = scanner.nextLine ();
         for (PhoneBookUser p: phoneBook.getPhoneBookUserList ()) {
             if (p.getFirstName ().equals (msg)){
-                answer.getStringArrayList ().add (p.toString ());
+                answer.getBuffer ().add (p.toString ());
             }
             if (p.getLastName ().equals (msg)){
-                answer.getStringArrayList ().add (p.toString ());
+                answer.getBuffer ().add (p.toString ());
             }
             if (p.getPhoneNumber ().equals (msg)){
-                answer.getStringArrayList ().add (p.toString ());
+                answer.getBuffer ().add (p.toString ());
             }
         }
-        answer.viewAnswer ();
+        answer.viewBufferArrayList ();
     }
     public void updatePhoneBookUser(){
         this.viewPhoneBookUser ();
-        System.out.println ("Введите id контакта из списка выше, " +
-                "данные которого вы хотите поменять: ");
+        answer.viewStrMsg (5);
         Scanner scanner = new Scanner (System.in);
         int idBookUser = -1;
         if(scanner.hasNextInt ()){
             idBookUser = scanner.nextInt ();
             for (int i = 0; i < phoneBook.getPhoneBookUserList ().size () ; i++) {
-                if (phoneBook.getPhoneBookUserList ().get (i).
-                        getIdUserBook () == idBookUser){
-                    System.out.println ("Введите новое имя контакта");
+                if (phoneBook.getPhoneBookUserList ().get (i).getIdUserBook () == idBookUser){
+                    answer.viewStrMsg (6);
                     phoneBook.getPhoneBookUserList ().get (i).setFirstName (scanner.nextLine ());
-                    System.out.println ("Введите новую фамилию контакта");
+                    answer.viewStrMsg (7);
                     phoneBook.getPhoneBookUserList ().get (i).setLastName (scanner.nextLine ());
-                    System.out.println ("Введите новый телефон");
+                    answer.viewStrMsg (8);
                     phoneBook.getPhoneBookUserList ().get (i).setPhoneNumber (scanner.nextLine ());
                     break;
                 }
             }
         }else {
-            System.out.println ("Вы ввели id не число!");
+            answer.viewException (5);
             return;}
     }
     public void deletedPhoneBookUser(){
         this.viewPhoneBookUser ();
-        System.out.println ("Введите id контакта из списка выше, " +
-                "данные которого вы хотите удалить: ");
+        answer.viewStrMsg (9);
         Scanner scanner = new Scanner (System.in);
         int idBookUser = -1;
         PhoneBookUser phoneBookUser = null;
@@ -100,16 +97,15 @@ public class ServicePhoneBook {
                 }
             }
         } else {
-            answer.getMsgException ().get (4);
+            answer.viewException (4);
             return;
         }
     }
 
     public void importFilePhoneBookUser () {
         Scanner scanner = new Scanner (System.in);
-        System.out.println ("Введите абсолютный путь к импортируемому файлу на диске:  ");
-        System.out.println ("Данные в файле должны быть записаны, " +
-                "через пробел по шаблону ({имя}пробел{фамилия}пробел{телефон})");
+        answer.viewStrMsg (11);
+        answer.viewStrMsg (10);
         String path = scanner.nextLine ();
         File file = new File (path);
         try (BufferedReader reader = new BufferedReader (new FileReader (file))
@@ -122,14 +118,14 @@ public class ServicePhoneBook {
                     phoneBook.getPhoneBookUserList ().
                             add (new PhoneBookUser (arrayStr[0], arrayStr[1], arrayStr[2]));
                 } else {
-                    answer.getMsgException ().get (0);
+                    answer.viewException (0);
 
                 }
             }
         } catch (FileNotFoundException e) {
-            answer.getMsgException ().get (1);
+            answer.viewException (1);
         } catch (IOException e) {
-            answer.getMsgException ().get (2);
+            answer.viewException (2);
         }
     }
 
@@ -140,11 +136,11 @@ public class ServicePhoneBook {
                 bufferedWriter.write (phoneBookUser.toString ()+"\n");
             }
             bufferedWriter.flush ();
-            answer.getStringArrayList ().add ("файл ( contactPhoneBook.txt ) с экспортированными " +
+            answer.getBuffer ().add ("файл ( contactPhoneBook.txt ) с экспортированными " +
                     "контактами находится в папке:  "+ file.getAbsolutePath ());
-            answer.viewAnswer ();
+            answer.viewBufferArrayList ();
         } catch (IOException e) {
-            answer.getMsgException ().get (3);
+            answer.viewException (3);
         }
     }
 }
