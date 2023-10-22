@@ -9,8 +9,8 @@ import ru.gb.mvc.service.ServicePhoneBookImpl;
  * вызвать соответствующий метод с уровня service.
  *
  * Принцип инверсии зависимостей (Dependency Inversion Principle)
- * ServicePhoneBookImpl servicePhoneBookImpl -  мы инжектим класс, который
- * реализует функциональные интерфейсы
+ * DataBooksService dataBooksService - мы инжектим класс, который
+ * реализует функциональные интерфейсы.
  *
  * */
 
