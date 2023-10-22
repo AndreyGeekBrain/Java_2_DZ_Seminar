@@ -7,15 +7,13 @@ import java.io.*;
 import java.util.Iterator;
 import java.util.Scanner;
 
-
 /*
 * Принцип открытости/закрытости (Open Closed Principle) -
 * мы расширяем функциональность данного класса, а не модифицируем его.
 *
 * */
 
-public class ServicePhoneBookImpl implements FileImportExport,BookCreateUser,
-        BookAddUser,BookAllUser,BookFindUser,BookUpdateUser,BookDelUser {
+public class ServicePhoneBookImpl extends DataBooksService {
 
     PhoneBook phoneBook;
     Answer answer;

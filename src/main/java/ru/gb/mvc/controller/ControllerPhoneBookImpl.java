@@ -1,4 +1,5 @@
 package ru.gb.mvc.controller;
+import ru.gb.mvc.service.DataBooksService;
 import ru.gb.mvc.service.ServicePhoneBookImpl;
 
 /*
@@ -14,34 +15,34 @@ import ru.gb.mvc.service.ServicePhoneBookImpl;
  * */
 
 public class ControllerPhoneBookImpl {
-    private ServicePhoneBookImpl servicePhoneBookImpl;
+    private DataBooksService dataBooksService;
 
     public ControllerPhoneBookImpl () {
-        this.servicePhoneBookImpl = new ServicePhoneBookImpl ();
+        this.dataBooksService = new ServicePhoneBookImpl ();
     }
 
     public boolean phoneBookEndPoint(int countMenu){
         switch (countMenu){
             case 1:
-                servicePhoneBookImpl.allPhoneBookUser ();
+                dataBooksService.allPhoneBookUser ();
                 return true;
             case 2:
-                servicePhoneBookImpl.addPhoneBookUser ();
+                dataBooksService.addPhoneBookUser ();
                 return true;
             case 3:
-                servicePhoneBookImpl.findPhoneBookUser ();
+                dataBooksService.findPhoneBookUser ();
                 return true;
             case 4:
-                servicePhoneBookImpl.updatePhoneBookUser ();
+                dataBooksService.updatePhoneBookUser ();
                 return true;
             case 5:
-                servicePhoneBookImpl.deletedPhoneBookUser ();
+                dataBooksService.deletedPhoneBookUser ();
                 return true;
             case 6:
-                servicePhoneBookImpl.importFilePhoneBookUser ();
+                dataBooksService.importFilePhoneBookUser ();
                 return true;
             case 7:
-                servicePhoneBookImpl.exportFilePhoneBookUser ();
+                dataBooksService.exportFilePhoneBookUser ();
                 return true;
             case 8:
                 return false;
